@@ -1,0 +1,17 @@
+[
+    {
+        "ident": "COMP101",
+        "nome": "Análise e Desenvolvimento de Sistemas",
+        "turno": "Matutino"
+    },
+    {
+        "ident": "COMP203",
+        "nome": "Desenvolvimento de Software Multiplataforma",
+        "turno": "Noturno"
+    },
+    {
+        "ident": "COMP103",
+        "nome": "Análise e Desenvolvimento de Sistemas",
+        "turno": "Noturno"
+    }
+]

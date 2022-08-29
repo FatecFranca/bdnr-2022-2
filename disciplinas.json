@@ -1,0 +1,32 @@
+[
+    {
+        "codigo": "IBD016",
+        "nome": "Banco de Dados - Não Relacional",
+        "carga_horaria": 80
+    },
+    {
+        "codigo": "ISG003",
+        "nome": "Segurança da Informação",
+        "carga_horaria": 40
+    },
+    {
+        "codigo": "ILP010",
+        "nome": "Linguagem de Programação",
+        "carga_horaria": 80
+    },
+    {
+        "codigo": "IED005",
+        "nome": "Estruturas de Dados",
+        "carga_horaria": 40
+    },
+    {
+        "codigo": "ISW028",
+        "nome": "Desenvolvimento Web I",
+        "carga_horaria": 40
+    },
+    {
+        "codigo": "ILP508",
+        "nome": "(Eletiva) Programação Web",
+        "carga_horaria": 40
+    }
+]

@@ -1,0 +1,110 @@
+[
+    {
+        "matricula": 2022001,
+        "nome": "Vilmair Varela",
+        "ident_curso": "COMP103",
+        "cods_disciplinas": [
+            "ISG003",
+            "ILP010"
+        ],
+        "sexo": "M",
+        "data_nasc": "2003-05-23"
+    },
+    {
+        "matricula": 2022002,
+        "nome": "Rozinda Rabelo",
+        "ident_curso": "COMP203",
+        "cods_disciplinas": [
+            "IBD016",
+            "IED005",
+            "ISW028"
+        ],
+        "sexo": "F",
+        "data_nasc": "1999-11-03"
+    },
+    {
+        "matricula": 2022003,
+        "nome": "Ademires Alvarenga",
+        "ident_curso": "COMP203",
+        "cods_disciplinas": [
+            "ISW028"
+        ],
+        "sexo": "F",
+        "data_nasc": "2000-06-10"
+    },
+    {
+        "matricula": 2022004,
+        "nome": "Eulison Esteves",
+        "ident_curso": "COMP101",
+        "cods_disciplinas": [
+            "ISG003",
+            "ILP508"
+        ],
+        "sexo": "M",
+        "data_nasc": "2004-02-05"
+    },
+    {
+        "matricula": 2022005,
+        "nome": "Graciomar Guimarães",
+        "curso": {
+            "ident": "COMP101",
+            "nome": "Análise e Desenvolvimento de Sistemas",
+            "turno": "Matutino"
+        },
+        "disciplinas": [
+            {
+                "codigo": "ISG003",
+                "nome": "Segurança da Informação",
+                "carga_horaria": 40
+            },
+            {
+                "codigo": "ILP508",
+                "nome": "(Eletiva) Programação Web",
+                "carga_horaria": 40
+            }
+        ],
+        "sexo": "M",
+        "data_nasc": "1995-09-24"
+    },
+    {
+        "matricula": 2022006,
+        "nome": "Lindelma Linhares",
+        "curso": {
+            "ident": "COMP203",
+            "nome": "Desenvolvimento de Software Multiplataforma",
+            "turno": "Noturno"
+        },
+        "disciplinas": [
+            {
+                "codigo": "ISW028",
+                "nome": "Desenvolvimento Web I",
+                "carga_horaria": 40
+            },
+            {
+                "codigo": "IED005",
+                "nome": "Estruturas de Dados",
+                "carga_horaria": 40
+            }
+        ],
+        "sexo": "F",
+        "data_nasc": "2001-10-22"
+    },
+    {
+        "matricula": 2022007,
+        "nome": "Queiliane Queiroz",
+        "curso": {
+            "ident": "COMP103",
+            "nome": "Análise e Desenvolvimento de Sistemas",
+            "turno": "Noturno"
+        },
+        "disciplinas": [
+            {
+                "codigo": "ILP010",
+                "nome": "Linguagem de Programação",
+                "carga_horaria": 80
+            }
+        ],
+        "sexo": "F",
+        "data_nasc": "2001-10-22"
+    }
+]
