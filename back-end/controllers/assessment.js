@@ -93,7 +93,7 @@ controller.createAnswer = async (req, res) => {
 
                 // 2.1) Verifica se uma resposta para a pergunta
                 // especificada já existe no vetor
-                let idx = assessment.answers.findIndex(a => a.question = req.body.question)
+                const idx = assessment.answers.findIndex(a => a.question === req.body.question)
                 if(idx >= 0) {
                     // Já existe uma resposta para a pergunta no vetor "answers"
                     assessment.answers[idx] = req.body
@@ -119,6 +119,22 @@ controller.createAnswer = async (req, res) => {
             else res.status(404).end()      // Não encontrou
 
         }
+        // HTTP 404: Not Found
+        else res.status(404).end()
+    }
+    catch(error) {
+        console.error(error)
+        // HTTP 500: Internal Server Error
+        res.status(500).send(error)
+    }
+}
+
+controller.retrieveAllAnswers = async (req, res) => {
+    try {
+        const assessment = await Assessment.findById(req.params.assessment.id).populate({path: 'answers', populate: { path: 'question'}})
+
+        // HTTP 200: OK (implícito)
+        if(assessment) res.send(assessment.answers)
         // HTTP 404: Not Found
         else res.status(404).end()
     }
