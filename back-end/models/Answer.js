@@ -1,35 +1,32 @@
 const mongoose = require('mongoose')
 
 const schema = mongoose.Schema({
-    // Campo de chave estrangeira para o model User
-    user: {
-        type: mongoose.ObjectId, // Tipo especial
-        ref: 'User',    // Coleção referenciada
+    question: {
+        type: mongoose.ObjectId,
+        ref: 'Question',
         required: true
     },
-    name: {
+    /*
+        Valores possíveis para o campo "answer":
+        Y: sim (yes)
+        N: no (não)
+        X: não aplicável (not applicable)
+        P: resposta adiada (postponed)
+    */
+    answer: {
         type: String,
-        required: true
+        required: true,
+        enum: ['Y', 'N', 'X', 'P']
     },
-    object: {
+    comment: {
         type: String,
-        required: true
+        required: false
     },
-    description: {
-        type: String
-    },
-    created_at: {
+    answered_at: {
         type: Date,
         required: true,
-        default: Date.now() // Data/hora atual
-    },
-    finished_at: {
-        type: Date
-    },
-    answers: [{
-        type: mongoose.ObjectId,
-        ref: 'Answer'
-    }]
+        default: Date.now()
+    }
 })
 
 /*
@@ -41,4 +38,4 @@ const schema = mongoose.Schema({
         é o mesmo nome do model, mas pluralizado e com
         inicial minúscula)
 */
-module.exports = mongoose.model('Assessment', schema, 'assessments')
+module.exports = mongoose.model('Answer', schema, 'answers')
