@@ -26,6 +26,15 @@ app.use('/', indexRouter);
 const userRoute = require('./routes/user')
 app.use('/user', userRoute)
 
+const criterionRoute = require('./routes/criterion')
+app.use('/criterion', criterionRoute)
+
+const questionRoute = require('./routes/question')
+app.use('/question', questionRoute)
+
+const glossaryRoute = require('./routes/glossary')
+app.use('/glossary', glossaryRoute)
+
 const assessmentRoute = require('./routes/assessment')
 app.use('/assessment', assessmentRoute)
 
