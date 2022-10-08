@@ -93,7 +93,8 @@ controller.createAnswer = async (req, res) => {
 
                 // 2.1) Verifica se uma resposta para a pergunta
                 // especificada já existe no vetor
-                const idx = assessment.answers.findIndex(a => a.question === req.body.question)
+                const idx = assessment.answers.findIndex(a => a.question.toString() === req.body.question)
+                console.log({idx})
                 if(idx >= 0) {
                     // Já existe uma resposta para a pergunta no vetor "answers"
                     assessment.answers[idx] = req.body
@@ -105,7 +106,8 @@ controller.createAnswer = async (req, res) => {
             }
             else {
                 // Cria o vetor "answers" com o primeiro elemento
-                assessment.answers = [req.body]
+                assessment.answers = []
+                assessment.answers.push(req.body.id)
             }
 
             // Atualiza assessment
@@ -131,12 +133,36 @@ controller.createAnswer = async (req, res) => {
 
 controller.retrieveAllAnswers = async (req, res) => {
     try {
-        const assessment = await Assessment.findById(req.params.assessment.id).populate({path: 'answers', populate: { path: 'question'}})
+        const assessment = await Assessment.findById(req.params.assessment_id).populate({path: 'answers', populate: { path: 'question'}})
 
         // HTTP 200: OK (implícito)
         if(assessment) res.send(assessment.answers)
         // HTTP 404: Not Found
         else res.status(404).end()
+    }
+    catch(error) {
+        console.error(error)
+        // HTTP 500: Internal Server Error
+        res.status(500).send(error)
+    }
+}
+
+controller.retrieveOneAnswer = async (req, res) => {
+    try {
+        const assessment = await Assessment.findById(req.params.assessment_id)
+        if(assessment) {
+            const result = assessment.answers.id(req.params.id)
+            if(result) {
+                res.send(result)
+            }
+            else {
+                res.status(404).end()     
+            }
+        }
+        else {
+            // HTTP 404: Not Found
+            res.status(404).end()
+        }
     }
     catch(error) {
         console.error(error)
