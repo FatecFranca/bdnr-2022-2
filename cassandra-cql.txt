@@ -1,0 +1,33 @@
+create table fatec.loja (
+	id uuid,
+	pais varchar,
+	nome varchar,
+	segmento varchar,
+	avaliacao int,
+	primary key(pais, id)
+);
+
+insert into fatec.loja (id, pais, nome, segmento, avaliacao)
+values (uuid(), 'Brasil', 'Rei do Camarão', 'Restaurante', 4);
+
+insert into fatec.loja (id, pais, nome, avaliacao)
+values (uuid(), 'Argentina', 'La Parrilla', 3);
+
+insert into fatec.loja (id, pais, nome, segmento, avaliacao)
+values (uuid(), 'Argentina', 'Uno y Dos', 'Brinquedos', 5);
+
+select * from fatec.loja where pais = 'Brasil' and id = 982ecae5-3d9e-4592-975c-d7cb5f72c841;
+
+create table fatec.loja (
+	id uuid,
+	pais varchar,
+	nome varchar,
+	segmento varchar,
+	avaliacao int,
+	primary key(pais, nome)
+);
+
+select * from fatec.loja where pais = 'Brasil' and nome = 'Rei do Camarão' allow filtering;
+
+update fatec.loja set segmento = 'Churrascaria'
+where pais = 'Argentina' and id = 8d7c8bcf-1216-465e-93f1-cd78e3214b1d;

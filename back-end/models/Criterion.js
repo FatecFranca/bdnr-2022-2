@@ -21,4 +21,4 @@ const schema = mongoose.Schema({
     2º - Relação de campos do esquema (schema)
     3º - Nome da collection no banco de dados (convenção: mesmo nome da model com letra inicial minúsculas e plural)
 */
-module.exports = mongoose.model('Criterion', schema, 'criteria')
+module.exports = mongoose.model('Criterion', schema, 'criterions')

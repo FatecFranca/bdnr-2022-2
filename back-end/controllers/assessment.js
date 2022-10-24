@@ -133,7 +133,9 @@ controller.createAnswer = async (req, res) => {
 
 controller.retrieveAllAnswers = async (req, res) => {
     try {
-        const assessment = await Assessment.findById(req.params.assessment_id).populate({path: 'answers', populate: { path: 'question'}})
+        const assessment = await Assessment
+            .findById(req.params.assessment_id)
+            .populate({path: 'answers', populate: { path: 'question'}})
 
         // HTTP 200: OK (implícito)
         if(assessment) res.send(assessment.answers)
@@ -163,6 +165,59 @@ controller.retrieveOneAnswer = async (req, res) => {
             // HTTP 404: Not Found
             res.status(404).end()
         }
+    }
+    catch(error) {
+        console.error(error)
+        // HTTP 500: Internal Server Error
+        res.status(500).send(error)
+    }
+}
+
+controller.updateAnswer = async (req, res) => {
+    try {
+        const assessment = await Assessment.findById(req.params.assessment_id)
+        if(assessment && assessment.answers.id(req.params.id)) {
+            // Atualiza os campos da resposta
+            assessment.answers.id(req.params.id).question = req.body.question
+            assessment.answers.id(req.params.id).answer = req.body.answer
+            assessment.answers.id(req.params.id).comment = req.body.comment
+            assessment.answers.id(req.params.id).answered_at = req.body.answered_at
+
+            // Marca o campo "answers" como modificado
+            assessment.markModified('answers')
+
+            await assessment.save()
+
+            // HTTP 204: No Content
+            res.status(204).end()
+        }
+        // HTTP 404: Not Found
+        else res.status(404).end()
+    }
+    catch(error) {
+        console.error(error)
+        // HTTP 500: Internal Server Error
+        res.status(500).send(error)
+    }
+}
+
+controller.deleteAnswer = async (req, res) => {
+    try {
+        const assessment = await Assessment.findById(req.params.assessment_id)
+        if(assessment && assessment.answers.id(req.params.id)) {
+            // Exclui o subdocumento relativo à resposta
+            assessment.answers.id(req.params.id).remove()
+            
+            // Marca o campo "answers" como modificado
+            assessment.markModified('answers')
+
+            await assessment.save()
+
+            // HTTP 204: No Content
+            res.status(204).end()
+        }
+        // HTTP 404: Not Found
+        else res.status(404).end()
     }
     catch(error) {
         console.error(error)
